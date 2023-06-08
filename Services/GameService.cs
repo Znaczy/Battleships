@@ -1,17 +1,14 @@
 ﻿using Battleships.Models;
-using Microsoft.Extensions.Hosting;
 using static Battleships.Models.PlayerTypes;
 
 namespace Battleships.Services
 {
     public class GameService : IGameService
     {
-        private readonly IHost _host;
         private readonly IPlayerServices _playerService;
 
-        public GameService (IHost host, IPlayerServices playerService) 
+        public GameService (IPlayerServices playerService) 
         {
-            _host = host;
             _playerService = playerService;
         }
 

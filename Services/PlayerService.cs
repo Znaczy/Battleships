@@ -7,7 +7,8 @@ namespace Battleships.Services
     {
         private readonly IShipServices _shipServices;
 
-        public PlayerService(IShipServices shipServices) {
+        public PlayerService(IShipServices shipServices) 
+        {
             _shipServices = shipServices;
         }
 
@@ -16,24 +17,10 @@ namespace Battleships.Services
             Player human = new Player() { Ships = _shipServices.CreateShips(), PlayerType = PlayerType.human };
             Player computer = new Player() { Ships = _shipServices.CreateShips(), PlayerType = PlayerType.computer };
 
-            PrepareBoard(human);
-            PrepareBoard(computer);
-
+            PopulateWithShipsManualy(human);
+            PopulateWithShipsAutomaticly(computer);
 
             return new List<Player>() { human, computer };
-        }
-        static void PrepareBoard(Player player)
-        {
-            //player.Board = CreateBoard(letterAxis, numberAxis);
-
-            if (player.PlayerType == PlayerType.computer)
-            {
-                PopulateWithShipsAutomaticly(player);
-            }
-            else
-            {
-                PopulateWithShips(player);
-            }
         }
 
         private static void PopulateWithShipsAutomaticly(Player computer)
@@ -52,7 +39,7 @@ namespace Battleships.Services
             }
         }
 
-        private static void PopulateWithShips(Player human)
+        private static void PopulateWithShipsManualy(Player human)
         {
             Console.WriteLine("Please put your ships on board.");
 
@@ -75,29 +62,12 @@ namespace Battleships.Services
             string[] letterAxis = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };
             string[] numberAxis = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
 
-
             string letter = input.Substring(0, 1);
             string number = input.Substring(1, 1);
-
 
             int letterIndex = 0;
 
             return new List<string>() { letter + number };
-        }
-
-        //public static List<string> CreateBoard(string[] letterAxis, string[] numberAxis)
-        //{
-        //    List<string> board = new List<string>();
-
-        //    for (int i = 0; i < letterAxis.Length; i++)
-        //    {
-        //        for (int j = 0; j < numberAxis.Length; j++)
-        //        {
-        //            board.Add(letterAxis[i] + numberAxis[j]);
-        //        }
-        //    }
-
-        //    return board;
         }
     }
 }
