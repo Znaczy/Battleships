@@ -1,0 +1,32 @@
+[
+  {
+    "Parts": [],
+    "Type": "carrier",
+    "IsSunk": false,
+    "Size": 5
+  },
+  {
+    "Parts": [],
+    "Type": "battleship",
+    "IsSunk": false,
+    "Size": 4
+  },
+  {
+    "Parts": [],
+    "Type": "submarine",
+    "IsSunk": false,
+    "Size": 3
+  },
+  {
+    "Parts": [],
+    "Type": "cruiser",
+    "IsSunk": false,
+    "Size": 3
+  },
+  {
+    "Parts": [],
+    "Type": "destroyer",
+    "IsSunk": false,
+    "Size": 2
+  }
+]
