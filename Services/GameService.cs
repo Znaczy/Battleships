@@ -49,7 +49,7 @@ namespace Battleships.Services
 
             foreach (Ship ship in defender.Ships)
             {
-                if (ship.Parts.Contains(shot))
+                if (ship.Position.Contains(shot))
                 {
                     ship.HitsReceived++;
                     if (ship.HitsReceived == ship.Size)

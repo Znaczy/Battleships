@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Battleships.Services
 {
-    public class ShipService : IShipServices
+    public class ShipService : IShipService
     {
         public List<Ship> CreateShips()
         {

@@ -5,7 +5,7 @@
         public string Type { get; set; }
         public bool IsSunk { get; set; }
         public int Size { get; set; }
-        public List<string> Parts = new List<string>();
+        public List<string> Position = new List<string>();
         public int HitsReceived = 0;
     }
 }

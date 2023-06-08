@@ -16,7 +16,7 @@ namespace Battleships
             services => services
             .AddScoped<IGameService, GameService>()
             .AddScoped<IPlayerServices, PlayerService>()
-            .AddScoped<IShipServices, ShipService>()
+            .AddScoped<IShipService, ShipService>()
             );
 
             using var host = builder.Build();

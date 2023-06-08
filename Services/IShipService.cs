@@ -2,7 +2,7 @@
 
 namespace Battleships.Services
 {
-    public interface IShipServices
+    public interface IShipService
     {
         public List<Ship> CreateShips();
     }

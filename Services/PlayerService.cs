@@ -5,9 +5,12 @@ namespace Battleships.Services
 {
     public class PlayerService : IPlayerServices
     {
-        private readonly IShipServices _shipServices;
+        private readonly IShipService _shipServices;
 
-        public PlayerService(IShipServices shipServices) 
+        static string[] letterAxis = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };
+        static string[] numberAxis = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
+
+        public PlayerService(IShipService shipServices) 
         {
             _shipServices = shipServices;
         }
@@ -17,7 +20,9 @@ namespace Battleships.Services
             Player human = new Player() { Ships = _shipServices.CreateShips(), PlayerType = PlayerType.human };
             Player computer = new Player() { Ships = _shipServices.CreateShips(), PlayerType = PlayerType.computer };
 
-            PopulateWithShipsManualy(human);
+            //PopulateWithShipsManually(human);
+            PopulateWithShipsAutomatically(human);
+
             PopulateWithShipsAutomatically(computer);
 
             return new List<Player>() { human, computer };
@@ -25,21 +30,18 @@ namespace Battleships.Services
 
         private static void PopulateWithShipsAutomatically(Player computer)
         {
-            string[] letterAxis = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };
-            string[] numberAxis = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
-
             foreach (Ship ship in computer.Ships)
             {
                 int j = 0;
                 for (int i = 0; i < ship.Size; i++)
                 {
-                    ship.Parts.Add(letterAxis[i] + numberAxis[j]);
+                    ship.Position.Add(letterAxis[i] + numberAxis[j]);
                 }
                 j++;
             }
         }
 
-        private static void PopulateWithShipsManualy(Player human)
+        private static void PopulateWithShipsManually(Player human)
         {
             Console.WriteLine("Please put your ships on board.");
 
@@ -65,7 +67,7 @@ namespace Battleships.Services
                     input = Console.ReadLine();
                 }
 
-                ship.Parts.Add(input);
+                ship.Position.Add(input);
 
                 var neighbours = FindNeighbours(input);
                 Console.WriteLine(@"Which one do you want to be next?");
@@ -79,9 +81,6 @@ namespace Battleships.Services
 
         private static List<string> FindNeighbours(string? input)
         {
-            string[] letterAxis = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };
-            string[] numberAxis = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
-
             string letter = input.Substring(0, 1);
             string number = input.Substring(1, 1);
 

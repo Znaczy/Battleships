@@ -1,6 +1,4 @@
-﻿using static Battleships.Models.PlayerTypes;
-
-namespace Battleships.Models
+﻿namespace Battleships.Models
 {
     public class Game
     {
