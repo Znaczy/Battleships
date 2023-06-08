@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Battleships.Models;
 
 namespace Battleships.Services
 {
     public interface IShipServices
     {
-
+        public List<Ship> CreateShips();
     }
 }
