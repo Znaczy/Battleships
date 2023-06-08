@@ -6,6 +6,6 @@
         public bool IsSunk { get; set; }
         public int Size { get; set; }
         public List<string> Parts = new List<string>();
-        public int ShotsTaken = 0;
+        public int HitsReceived = 0;
     }
 }

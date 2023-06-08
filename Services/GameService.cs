@@ -1,5 +1,4 @@
 ﻿using Battleships.Models;
-using static Battleships.Models.PlayerTypes;
 
 namespace Battleships.Services
 {
@@ -41,19 +40,19 @@ namespace Battleships.Services
                 shot = Shoot();
                 Console.WriteLine("Player {0}, shoots: {1}!", attacker.PlayerType, shot);
 
-                if (!attacker.ShotsTaken.Contains(shot))
+                if (!attacker.HitsReceived.Contains(shot))
                 {
-                    attacker.ShotsTaken.Add(shot);
+                    attacker.HitsReceived.Add(shot);
                     break;
                 }
-            } while (attacker.ShotsTaken.Contains(shot));
+            } while (attacker.HitsReceived.Contains(shot));
 
             foreach (Ship ship in defender.Ships)
             {
                 if (ship.Parts.Contains(shot))
                 {
-                    ship.ShotsTaken++;
-                    if (ship.ShotsTaken == ship.Size)
+                    ship.HitsReceived++;
+                    if (ship.HitsReceived == ship.Size)
                     {
                         ship.IsSunk = true;
                         Console.WriteLine("Congratulations, {0}! You have sunk the {1}!", attacker.PlayerType, ship.Type);

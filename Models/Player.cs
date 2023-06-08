@@ -6,6 +6,6 @@ namespace Battleships.Models
     {
         public PlayerType PlayerType { get; set; }
         public List<Ship> Ships = new List<Ship>();
-        public List<string> ShotsTaken = new List<string>();
+        public List<string> HitsReceived = new List<string>();
     }
 }

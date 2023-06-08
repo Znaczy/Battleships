@@ -1,11 +1,8 @@
 ﻿namespace Battleships.Models
 {
-    public class PlayerTypes
+    public enum PlayerType
     {
-        public enum PlayerType
-        {
-            human,
-            computer
-        }
+        human,
+        computer
     }
 }
