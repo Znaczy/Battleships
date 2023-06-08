@@ -1,4 +1,5 @@
 ﻿using Battleships.Models;
+using System.Text.RegularExpressions;
 using static Battleships.Models.PlayerTypes;
 
 namespace Battleships.Services
@@ -51,6 +52,13 @@ namespace Battleships.Services
                 for (int i = 0; i < ship.Size; i++)
                 {
                     string? input = Console.ReadLine();
+                    
+                    while (string.IsNullOrEmpty(input) || !Regex.IsMatch(input, @"[a-hA-H][1-8]"))
+                    {
+                        Console.WriteLine("Input was not valid. Please try again.");
+                        Console.WriteLine(@"Write letter from a to h and number between 1 and 8 (e.g. 'b4'), and press enter.");
+                        input = Console.ReadLine();
+                    }
 
                     FindNeighbours(input);
                 }
